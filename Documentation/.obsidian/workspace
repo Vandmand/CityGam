@@ -1,0 +1,103 @@
+{
+  "main": {
+    "id": "dbc3a156da1e9651",
+    "type": "split",
+    "children": [
+      {
+        "id": "274797c31e2b92ec",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Logbog.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "92fc4ffd717dd8e7",
+    "type": "split",
+    "children": [
+      {
+        "id": "2608da20fefe3dc4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5992c03c9fafb234",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "f35b4790d59bef5a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "5b1474d66a3468c8",
+    "type": "split",
+    "children": [
+      {
+        "id": "88e283fbdc584ec7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ef2755a4f3cb0fc5",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Logbog.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "274797c31e2b92ec",
+  "lastOpenFiles": [
+    "Logbog.md",
+    "Plan For Eksamensprojekt.md",
+    "Required modules/GUI.md",
+    "Images/Pasted image 20220302092841.png",
+    "Nice to have/Building Areas.md",
+    "Nice to have/Laws.md",
+    "Nice to have/Emergency Depardments.md",
+    "Required modules/Menu.md",
+    "Required modules/Money.md",
+    "Nice to have/people.md"
+  ]
+}
