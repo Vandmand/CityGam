@@ -124,4 +124,3 @@ class Renderer {
         }))
     }
 }
-const rd = new Renderer();
