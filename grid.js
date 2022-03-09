@@ -8,7 +8,7 @@
     px, py and gx, gy (for pixelposition, and gridposition)
 */
 class Grid {
-    constructor(rows, cols = rows, w = width, h = height, x = 0, y = 0, center) {
+    constructor(rows, cols, w, h, x, y, center) {
         // Contructor variables
         this.rows = rows
         this.cols = cols
@@ -31,7 +31,7 @@ class Grid {
                 this.gy = gy
                 this.px = px
                 this.py = py
-                this.occupied = false
+                this.tile = null;
             }
         }
         // All debugging tools
@@ -64,22 +64,30 @@ class Grid {
         const centerValueX = this.center ? this.w / this.rows / 2 : 0;
         const centerValueY = this.center ? this.h / this.cols / 2 : 0;
 
-        rd.add('grid', () => noFill());
+        rd.add('gridLines', () => noFill());
         this.getAllPos().forEach(position => {
-            rd.add('grid', () => rect(position.px-centerValueX,position.py-centerValueY,this.w/this.rows,this.h/this.cols));
+            rd.add('gridLines', () => rect(position.px - centerValueX, position.py - centerValueY, this.w / this.rows, this.h / this.cols));
         });
     }
 
-    // Nearest position in grid
+    // Draw the tiles inside the grid
+    draw() {
+        this.getAllPos().forEach(position => {
+            rd.add()
+        });
+    }
 
+    // Get all positions as one long array
     getAllPos() {
         let returnArr = this.grid[0];
         for (let i = 1; i < this.grid.length; i++) {
             const col = this.grid[i];
-            returnArr = concat(returnArr, col)
+            returnArr = concat(returnArr, col);
         }
-        return returnArr
+        return returnArr;
     }
+
+    // Get the nearest Position
     nearestPos(px, py) {
         return this.getAllPos().reduce((a, b) => dist(px, py, a.px, a.py) < dist(px, py, b.px, b.py) ? a : b)
     }
