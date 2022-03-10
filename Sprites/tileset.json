@@ -1,0 +1,7 @@
+{
+    "intersect": "Sprites/intersect.png",
+    "straight": "Sprites/straight.png",
+    "tcross": "Sprites/tcross.png",
+    "turn": "Sprites/turn.png",
+    "grass": "Sprites/grass.png"
+}

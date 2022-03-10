@@ -1,14 +1,16 @@
 const rd = new Renderer();
 let grid;
+let tM;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  grid = createGrid(20, 10, height * 2, height, 0, 0, true);
+  grid = createGrid(10, 10, height, height, 0, 0, true);
+  tM = createTileModule(grid);
   // grid.drawlines();
 }
 
 function draw() {
-  background(220);
+  background(106,190,48);
   rd.render();
 }
 

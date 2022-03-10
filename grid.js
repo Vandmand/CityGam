@@ -17,6 +17,10 @@ class Grid {
         this.w = w
         this.h = h
 
+        // the width and height of a single square in the grid
+        this.gridWidth = this.w/this.rows
+        this.gridHeight = this.h/this.cols
+
         // Defines whether the positions should be the center of the grid
         // Or at the left highest corner. Usefull nearestPos()
         this.center = center
@@ -31,7 +35,7 @@ class Grid {
                 this.gy = gy
                 this.px = px
                 this.py = py
-                this.tile = null;
+                this.occupied = false
             }
         }
         // All debugging tools
@@ -41,14 +45,15 @@ class Grid {
     }
     // Initialize grid
     createGrid() {
-        const centerValueX = this.center ? this.w / this.rows / 2 : 0
-        const centerValueY = this.center ? this.h / this.cols / 2 : 0
+        const centerValueX = this.center ? this.gridWidth / 2 : 0
+        const centerValueY = this.center ? this.gridHeight / 2 : 0
+
         for (let row = 0; row < this.rows; row++) {
             this.grid[row] = []
             for (let col = 0; col < this.cols; col++) {
                 const pos = {
-                    x: this.w / this.rows * row + this.x + centerValueX,
-                    y: this.h / this.cols * col + this.y + centerValueY
+                    x: this.gridWidth * row + this.x + centerValueX,
+                    y: this.gridHeight * col + this.y + centerValueY
                 }
                 this.grid[row][col] = new this.GridElement(row, col, pos.x, pos.y)
             }
@@ -61,19 +66,12 @@ class Grid {
 
     // Draw lines to visualise the grids position
     drawlines() {
-        const centerValueX = this.center ? this.w / this.rows / 2 : 0;
-        const centerValueY = this.center ? this.h / this.cols / 2 : 0;
+        const centerValueX = this.center ? this.gridWidth / 2 : 0;
+        const centerValueY = this.center ? this.gridHeight / 2 : 0;
 
         rd.add('gridLines', () => noFill());
         this.getAllPos().forEach(position => {
-            rd.add('gridLines', () => rect(position.px - centerValueX, position.py - centerValueY, this.w / this.rows, this.h / this.cols));
-        });
-    }
-
-    // Draw the tiles inside the grid
-    draw() {
-        this.getAllPos().forEach(position => {
-            rd.add()
+            rd.add('gridLines', () => rect(position.px - centerValueX, position.py - centerValueY, this.gridWidth, this.gridHeight));
         });
     }
 
@@ -93,8 +91,11 @@ class Grid {
     }
 }
 
+// The function used to create a new grid
 function createGrid(rows, cols = rows, w = width, h = height, x = 0, y = 0, center = false) {
     const temp = new Grid(rows, cols, w, h, x, y, center);
     temp.createGrid();
     return temp;
 }
+
+
