@@ -10,7 +10,7 @@
 class Renderer {
     constructor() {
         // The variable that actually holds the rendering:
-        this.renderList = new Map(); 
+        this.renderList = new Map();
         this.defaultPriority = 0;
 
         //Custom error message
@@ -64,6 +64,13 @@ class Renderer {
                         this.add(key, i);
                     });
                     break;
+                case Object:
+                    if (drawFunction.toUpperCase() == 'FOLDER') {
+
+                    } else {
+                        throw new this.error('Invalid datatype');
+                    }
+                    break;
                 default:
                     throw new this.error('Invalid datatype');
             }
@@ -87,6 +94,17 @@ class Renderer {
             throw new this.error('No key specefied');
         }
     }
+
+    createFolder(key, path, priority = this.defaultPriority) {
+        if (this.get(key)) {
+            let oldMap = [...this.renderList];
+            let left = oldMap.filter(entry => { if (entry[1].priority <= priority) { return true } });
+            let right = oldMap.filter(entry => { if (entry[1].priority > priority) { return true } });
+            this.renderList = new Map(left.concat([[key, { priority: priority, folder: [] }]], right));
+        } else {
+            throw new this.error('Invalid key')
+        }
+    }
     // Remove renderKey
     removeKey(key) {
         if (key) {
@@ -100,13 +118,17 @@ class Renderer {
         }
     }
     // Render all keys
-    render() {
-        this.renderList.forEach(renderGroup => {
-            push();
-            renderGroup.functions.forEach(drawFunction => {
-                drawFunction();
-            })
-            pop();
+    render(entry = this.renderList) {
+        entry.forEach(renderGroup => {
+            if (renderGroup.functions) {
+                push();
+                renderGroup.functions.forEach(drawFunction => {
+                    drawFunction();
+                })
+                pop();   
+            } else if (renderGroup.folder){
+                this.render(renderGroup.folder)
+            }
         });
     }
 

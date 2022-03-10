@@ -21,19 +21,27 @@ class TileModule {
             position.tile = undefined;
             position.tileRotation = 0;
             rd.add('tiles' + index, () => imageMode(CENTER))
+            rd.add('tiles' + index, () => angleMode(DEGREES))
             rd.add('tiles' + index, () => translate(position.px, position.py))
             rd.add('tiles' + index, () => rotate(position.tileRotation))
             rd.add('tiles' + index, () => position.tile == undefined ? undefined : image(position.tile, 0,0, this.grid.gridWidth, this.grid.gridHeight))
             });
     }
-    placeTile(x, y, tile) {
-        this.grid.pos(x, y).tile = this.tile(tile);
+    placeTile(x, y, tile, rotation) {
+        let gridPos = this.grid.pos(x,y);
+        if(!gridPos.tile) {
+            gridPos.tile = this.tile(tile);
+            if(rotation) {
+                gridPos.tileRotation = rotation;
+            }
+        } else {
+            console.error('Grid position not empty');
+        }
     }
     tile(tile) {
         const temp = loadImage(this.tileset[tile])
         return temp
     }
-
     // At some point making importing tileset json files maybe
 }
 
