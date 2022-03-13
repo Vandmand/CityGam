@@ -95,12 +95,14 @@ class Renderer {
         }
     }
 
+    //Unused code block. Ill come back to. Hopefully
     createFolder(key, path, priority = this.defaultPriority) {
-        if (this.get(key)) {
+        if (this.get(path)) {
             let oldMap = [...this.renderList];
             let left = oldMap.filter(entry => { if (entry[1].priority <= priority) { return true } });
             let right = oldMap.filter(entry => { if (entry[1].priority > priority) { return true } });
             this.renderList = new Map(left.concat([[key, { priority: priority, folder: [] }]], right));
+
         } else {
             throw new this.error('Invalid key')
         }

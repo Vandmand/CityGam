@@ -7,7 +7,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   grid = createGrid(10, 10, height, height, 0, 0, true);
   tM = createTileModule(grid);
-  // grid.drawlines();
+  grid.drawlines();
   drawhappiness();
   housesplaced();
 
