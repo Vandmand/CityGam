@@ -13,6 +13,7 @@ class TileModule {
             straight: "Sprites/straight.png",
             tcross: "Sprites/tcross.png",
             turn: "Sprites/turn.png",
+            iturn: "Sprites/iturn.png",
             grass: "Sprites/grass.png",
             point: "Sprites/point.png",
             end: "Sprites/end.png"
@@ -44,6 +45,106 @@ class TileModule {
         const temp = loadImage(this.tileset[tile])
         return temp
     }
+
+    updateTile(gridPosition) {
+        if (gridPosition) {
+            if (gridPosition.tile) {
+                let tile
+                let rotation
+                let posArr = [];
+
+                this.getNeighbors(gridPosition).forEach((pos, i) => {
+                    if (pos) {
+                        posArr[i] = pos.tile ? true : false
+                    } else {
+                        posArr[i] = false
+                    }
+                })
+                switch (posArr.toString()) {
+                    case 'true,true,false,false':
+                        tile = 'straight';
+                        rotation = 90;
+                        break;
+                    case 'false,false,true,true':
+                        tile = 'straight';
+                        rotation = 0;
+                        break;
+                    case 'true,false,false,true':
+                        tile = 'turn';
+                        rotation = 180;
+                        break;
+                    case 'false,true,true,false':
+                        tile = 'turn';
+                        rotation = 0;
+                        break;
+                    case 'true,false,true,false':
+                        tile = 'turn';
+                        rotation = 90;
+                        break;
+                    case 'false,true,false,true':
+                        tile = 'turn';
+                        rotation = 270;
+                        break;
+                    case 'true,false,false,false':
+                        tile = 'end';
+                        rotation = 90;
+                        break;
+                    case 'false,true,false,false':
+                        tile = 'end';
+                        rotation = 270
+                        break;
+                    case 'false,false,true,false':
+                        tile = 'end';
+                        rotation = 0;
+                        break;
+                    case 'false,false,false,true':
+                        tile = 'end';
+                        rotation = 180
+                        break;
+                    case 'true,true,true,true':
+                        tile = 'intersect';
+                        rotation = 0;
+                        break;
+                    case 'true,true,true,false':
+                        tile = 'tcross';
+                        rotation = 90
+                        break;
+                    case 'false,true,true,true':
+                        tile = 'tcross';
+                        rotation = 0;
+                        break;
+                    case 'true,false,true,true':
+                        tile = 'tcross';
+                        rotation = 180;
+                        break;
+                    case 'true,true,false,true':
+                        tile = 'tcross';
+                        rotation = 270;
+                        break;
+                    default:
+                        tile = 'point'
+                        rotation = 0
+                        break;
+                }
+                gridPosition.tile = this.tile(tile)
+                gridPosition.tileRotation = rotation
+            } else {
+                return;
+            }
+        }
+    }
+    getNeighbors(position) {
+        // Array counted as up down left right
+        let arr = [
+            grid.pos(position.gx, position.gy - 1),
+            grid.pos(position.gx, position.gy + 1),
+            grid.pos(position.gx - 1, position.gy),
+            grid.pos(position.gx + 1, position.gy)
+        ];
+        return arr;
+
+
+    }
     // At some point making importing tileset json files maybe
 }
 
@@ -55,42 +156,22 @@ function createTileModule(grid) {
 
 function mousePressed() {
     const gridPos = grid.nearestPos(mouseX, mouseY);
-    const tileAndRotation = getTile(gridPos);
-    tM.placeTile(gridPos.gx, gridPos.gy, tileAndRotation[0], tileAndRotation[1])
-}
-
-function getTile(gridPosition) {
-    let returnValue = [];
-    // Array counted as up down left right
-    let nearbyPositions = [
-        grid.pos(gridPosition.gx, gridPosition.gy - 1).tile,
-        grid.pos(gridPosition.gx, gridPosition.gy + 1).tile,
-        grid.pos(gridPosition.gx - 1, gridPosition.gy).tile,
-        grid.pos(gridPosition.gx + 1, gridPosition.gy).tile
-    ]
-    nearbyPositions.forEach((pos, i) => {
-        nearbyPositions[i] = pos ? true : false
-    })
-    yeet(nearbyPositions.toString())
-    switch (nearbyPositions.toString()) {
-        case 'false,false,false,false':
-            returnValue = ['point', 0]
+    switch (mouseButton) {
+        case LEFT:
+            tM.placeTile(gridPos.gx, gridPos.gy, 'point', 0)
+            tM.updateTile(gridPos);
+            tM.getNeighbors(gridPos).forEach(pos => {
+                tM.updateTile(pos)
+            });
             break;
-        case 'true,true,false,false':
-            returnValue = ['straight', 90]
-            break;
-        case 'false,false,true,true':
-            returnValue = ['straight', 0]
-            break;
-        case 'true,false,false,true':
-            returnValue = ['turn', 90]
-            break;
-        case 'false,true,true,false':
-            returnValue = ['turn', 0]
+        case RIGHT:
+            gridPos.tile = undefined;
+            tM.getNeighbors(gridPos).forEach(pos => {
+                tM.updateTile(pos)
+            });
             break;
         default:
-            returnValue = ['point', 0]
             break;
     }
-    return returnValue
 }
+

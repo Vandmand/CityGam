@@ -1,7 +1,10 @@
 {
-    "intersect": "Sprites/intersect.png",
-    "straight": "Sprites/straight.png",
-    "tcross": "Sprites/tcross.png",
-    "turn": "Sprites/turn.png",
-    "grass": "Sprites/grass.png"
+  "intersect": "Sprites/intersect.png",
+  "straight": "Sprites/straight.png",
+  "tcross": "Sprites/tcross.png",
+  "turn": "Sprites/turn.png",
+  "iturn": "Sprites/iturn.png",
+  "grass": "Sprites/grass.png",
+  "point": "Sprites/point.png",
+  "end": "Sprites/end.png"
 }

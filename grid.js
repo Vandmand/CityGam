@@ -38,6 +38,13 @@ class Grid {
                 this.occupied = false
             }
         }
+        //Custom error message
+        this.error = class GirdError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "GridError";
+            }
+        }
         // All debugging tools
         this.debug = {
 
@@ -45,23 +52,36 @@ class Grid {
     }
     // Initialize grid
     createGrid() {
+
+        // Calculate a center offset if this.center is true
         const centerValueX = this.center ? this.gridWidth / 2 : 0
         const centerValueY = this.center ? this.gridHeight / 2 : 0
 
         for (let row = 0; row < this.rows; row++) {
             this.grid[row] = []
+
             for (let col = 0; col < this.cols; col++) {
+
+                // Calculate positions
                 const pos = {
                     x: this.gridWidth * row + this.x + centerValueX,
                     y: this.gridHeight * col + this.y + centerValueY
                 }
+
+                // Add a new element to the grid with positions saved
                 this.grid[row][col] = new this.GridElement(row, col, pos.x, pos.y)
             }
         }
     }
+    
     // Get pixelposition from grid position
     pos(gx, gy) {
-        return this.grid[gx] && this.grid[gy] ? this.grid[gx][gy] : console.error('No such grid position')
+        // Check to see if grid position exist
+        if(this.grid[gx] && this.grid[gy]) {
+            return this.grid[gx][gy]
+        } else {
+            return undefined
+        }
     }
 
     // Draw lines to visualise the grids position
