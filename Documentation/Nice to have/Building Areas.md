@@ -1,5 +1,5 @@
 [[Building]]
 [[Collision]]
-[[Tilesheet]]
+[[Tileshet]]
 [[Grid]]
 

@@ -1,5 +1,5 @@
 // ===========================================================
-// = Grid Module = Elias Kulmbak =
+// = Grid Module = Elias Kulmbak = v 0.1.0
 // ===========================================================
 /*
     This module makes a usable and editable grid
@@ -97,9 +97,12 @@ class Grid {
 
     // Get all positions as one long array
     getAllPos() {
+        // define a return array, and put the first collumn in.
         let returnArr = this.grid[0];
+
         for (let i = 1; i < this.grid.length; i++) {
             const col = this.grid[i];
+            // for all the columns, add the next column onto it.
             returnArr = concat(returnArr, col);
         }
         return returnArr;

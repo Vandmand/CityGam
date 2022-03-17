@@ -1,10 +1,10 @@
-{
-  "intersect": "Sprites/intersect.png",
-  "straight": "Sprites/straight.png",
-  "tcross": "Sprites/tcross.png",
-  "turn": "Sprites/turn.png",
-  "iturn": "Sprites/iturn.png",
-  "grass": "Sprites/grass.png",
-  "point": "Sprites/point.png",
-  "end": "Sprites/end.png"
-}
+[
+  {"point": "Sprites/point.png", "condition": "posArr.toString() == 'false,false,false,false'", "functions": ["yeet()"]},
+  {"intersect": "Sprites/intersect.png", "condition": "posArr.toString() == 'true,true,true,true", "functions": ["yeet()"]},
+  {"straight": "Sprites/straight.png", "condition": "posArr.toString() == ", "functions": [""]},
+  {"tcross": "Sprites/tcross.png", "condition": "posArr.toString() == ", "functions": [""]},
+  {"turn": "Sprites/turn.png", "condition": "posArr.toString() == ", "functions": [""]},
+  {"iturn": "Sprites/iturn.png", "condition": "posArr.toString() == ", "functions": [""]},
+  {"grass": "Sprites/grass.png", "condition": "posArr.toString() == ", "functions": [""]},
+  {"end": "Sprites/end.png", "condition": "posArr.toString() == ", "functions": [""]}
+]

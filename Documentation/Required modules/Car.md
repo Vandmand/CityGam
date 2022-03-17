@@ -1,2 +1,2 @@
-[[Tilesheet]]
+[[Tileshet]]
 [[Pathfinding]]

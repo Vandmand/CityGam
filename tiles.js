@@ -1,5 +1,5 @@
 // ===========================================================
-// = Tile Module = Elias Kulmbak =
+// = Tile Module = Elias Kulmbak = v 0.1.0
 // ===========================================================
 /*
     This module creates the tiles for each position in grid,
@@ -8,16 +8,7 @@
 class TileModule {
     constructor(gridModule) {
         this.grid = gridModule
-        this.tileset = {
-            intersect: "Sprites/intersect.png",
-            straight: "Sprites/straight.png",
-            tcross: "Sprites/tcross.png",
-            turn: "Sprites/turn.png",
-            iturn: "Sprites/iturn.png",
-            grass: "Sprites/grass.png",
-            point: "Sprites/point.png",
-            end: "Sprites/end.png"
-        }
+        this.tileset = {}
     }
     createTiles() {
         this.grid.getAllPos().forEach((position, index) => {
@@ -29,6 +20,9 @@ class TileModule {
             rd.add('tiles' + index, () => rotate(position.tileRotation))
             rd.add('tiles' + index, () => position.tile == undefined ? undefined : image(position.tile, 0, 0, this.grid.gridWidth, this.grid.gridHeight))
         });
+    }
+    loadTileset(path) {
+        this.tileset = loadJSON(path)
     }
     placeTile(x, y, tile, rotation) {
         let gridPos = this.grid.pos(x, y);
@@ -60,74 +54,77 @@ class TileModule {
                         posArr[i] = false
                     }
                 })
-                switch (posArr.toString()) {
-                    case 'true,true,false,false':
-                        tile = 'straight';
-                        rotation = 90;
-                        break;
-                    case 'false,false,true,true':
-                        tile = 'straight';
-                        rotation = 0;
-                        break;
-                    case 'true,false,false,true':
-                        tile = 'turn';
-                        rotation = 180;
-                        break;
-                    case 'false,true,true,false':
-                        tile = 'turn';
-                        rotation = 0;
-                        break;
-                    case 'true,false,true,false':
-                        tile = 'turn';
-                        rotation = 90;
-                        break;
-                    case 'false,true,false,true':
-                        tile = 'turn';
-                        rotation = 270;
-                        break;
-                    case 'true,false,false,false':
-                        tile = 'end';
-                        rotation = 90;
-                        break;
-                    case 'false,true,false,false':
-                        tile = 'end';
-                        rotation = 270
-                        break;
-                    case 'false,false,true,false':
-                        tile = 'end';
-                        rotation = 0;
-                        break;
-                    case 'false,false,false,true':
-                        tile = 'end';
-                        rotation = 180
-                        break;
-                    case 'true,true,true,true':
-                        tile = 'intersect';
-                        rotation = 0;
-                        break;
-                    case 'true,true,true,false':
-                        tile = 'tcross';
-                        rotation = 90
-                        break;
-                    case 'false,true,true,true':
-                        tile = 'tcross';
-                        rotation = 0;
-                        break;
-                    case 'true,false,true,true':
-                        tile = 'tcross';
-                        rotation = 180;
-                        break;
-                    case 'true,true,false,true':
-                        tile = 'tcross';
-                        rotation = 270;
-                        break;
-                    default:
-                        tile = 'point'
-                        rotation = 0
-                        break;
-                }
-                gridPosition.tile = this.tile(tile)
-                gridPosition.tileRotation = rotation
+                this.tileset.forEach(tile => {
+                    let condition = new Function("", tile.condition);
+                })
+                // switch (posArr.toString()) {
+                //     case 'true,true,false,false':
+                //         tile = 'straight';
+                //         rotation = 90;
+                //         break;
+                //     case 'false,false,true,true':
+                //         tile = 'straight';
+                //         rotation = 0;
+                //         break;
+                //     case 'true,false,false,true':
+                //         tile = 'turn';
+                //         rotation = 180;
+                //         break;
+                //     case 'false,true,true,false':
+                //         tile = 'turn';
+                //         rotation = 0;
+                //         break;
+                //     case 'true,false,true,false':
+                //         tile = 'turn';
+                //         rotation = 90;
+                //         break;
+                //     case 'false,true,false,true':
+                //         tile = 'turn';
+                //         rotation = 270;
+                //         break;
+                //     case 'true,false,false,false':
+                //         tile = 'end';
+                //         rotation = 90;
+                //         break;
+                //     case 'false,true,false,false':
+                //         tile = 'end';
+                //         rotation = 270
+                //         break;
+                //     case 'false,false,true,false':
+                //         tile = 'end';
+                //         rotation = 0;
+                //         break;
+                //     case 'false,false,false,true':
+                //         tile = 'end';
+                //         rotation = 180
+                //         break;
+                //     case 'true,true,true,true':
+                //         tile = 'intersect';
+                //         rotation = 0;
+                //         break;
+                //     case 'true,true,true,false':
+                //         tile = 'tcross';
+                //         rotation = 90
+                //         break;
+                //     case 'false,true,true,true':
+                //         tile = 'tcross';
+                //         rotation = 0;
+                //         break;
+                //     case 'true,false,true,true':
+                //         tile = 'tcross';
+                //         rotation = 180;
+                //         break;
+                //     case 'true,true,false,true':
+                //         tile = 'tcross';
+                //         rotation = 270;
+                //         break;
+                //     default:
+                //         tile = 'point'
+                //         rotation = 0
+                //         break;
+                // }
+                // gridPosition.tile = this.tile(tile)
+                // gridPosition.tileRotation = rotation
             } else {
                 return;
             }
@@ -148,9 +145,10 @@ class TileModule {
     // At some point making importing tileset json files maybe
 }
 
-function createTileModule(grid) {
+function createTileModule(grid, tilesetPath) {
     let temp = new TileModule(grid);
     temp.createTiles();
+    temp.loadTileset(tilesetPath);
     return temp;
 }
 

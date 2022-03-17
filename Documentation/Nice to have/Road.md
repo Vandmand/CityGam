@@ -1,4 +1,4 @@
-[[Tilesheet]]
+[[Tileshet]]
 [[Collision]]
 [[Grid]]
 [[Money]]

@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Required modules/Grid.md",
+            "file": "Required modules/Renderer.md",
             "mode": "source",
             "source": false
           }
@@ -66,7 +66,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 499
+    "width": 275
   },
   "right": {
     "id": "5b1474d66a3468c8",
@@ -82,7 +82,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Required modules/Grid.md",
+                "file": "Required modules/Renderer.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,15 +102,15 @@
   },
   "active": "c17ef7bb11114b7a",
   "lastOpenFiles": [
-    "Required modules/Grid.md",
-    "Required modules/Tilesheet.md",
-    "Code Snippets/Grid Snippets.md",
-    "Plan For Eksamensprojekt.md",
-    "Code Snippets/Grid/createGrid().md",
-    "Code Snippets/Grid/getAllPos().md",
-    "Code Snippets/Grid/pos().md",
-    "Huskeliste.md",
     "Required modules/Renderer.md",
-    "Required modules/Happiness.md"
+    "Required modules/Grid.md",
+    "Required modules/Car.md",
+    "Required modules/Collision.md",
+    "Required modules/Tileshet.md",
+    "Required modules/Money.md",
+    "Required modules/Menu.md",
+    "Required modules/Happiness.md",
+    "Required modules/GUI.md",
+    "Code Snippets/Grid Snippets.md"
   ]
 }

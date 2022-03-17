@@ -1,3 +1,5 @@
+
+
 // My favourite funtion (cause im lazy)
 function yeet(str = 'yeet', ...rest) {
     let logStr = str;

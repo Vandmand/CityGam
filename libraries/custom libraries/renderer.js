@@ -1,5 +1,5 @@
 // ===========================================================
-// = Renderer Module = Elias Kulmbak =
+// = Renderer Module = Elias Kulmbak = v 0.2.0
 // ===========================================================
 /*
     This module collects all "renders" from p5.
