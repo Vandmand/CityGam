@@ -1,6 +1,7 @@
 const rd = new Renderer();
 let grid;
 let tm;
+let GUI;
 
 
 function setup() {

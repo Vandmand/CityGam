@@ -109,6 +109,10 @@ class Grid {
     nearestPos(px, py) {
         return this.getAllPos().reduce((a, b) => dist(px, py, a.px, a.py) < dist(px, py, b.px, b.py) ? a : b)
     }
+
+    getNeighbors(gx, gy) {
+        return [this.pos(gx,gy-1), this.pos(gx+1,gy), this.pos(gx,gy+1), this.pos(gx-1,gy)]
+    }
 }
 
 // The function used to create a new grid

@@ -10,7 +10,8 @@ class TileModule {
         this.grid = gridModule
 
         this.tiles = {
-            ROAD: color(107)
+            ROAD: color(107),
+            HOUSE: color('#c14d2a')
         }
     }
     createTiles() {
@@ -45,7 +46,16 @@ function mousePressed() {
     const gridPos = grid.nearestPos(mouseX, mouseY);
     switch (mouseButton) {
         case LEFT:
-            tm.placeTile(gridPos.gx, gridPos.gy, 'ROAD')
+            switch (keyCode) {
+                case 82:
+                    tm.placeTile(gridPos.gx, gridPos.gy, 'ROAD')
+                    break;
+                case 72:
+                    tm.placeTile(gridPos.gx, gridPos.gy, 'HOUSE')
+                    break;
+                default:
+                    break;
+            }
             break;
         case RIGHT:
             gridPos.tile = undefined;
