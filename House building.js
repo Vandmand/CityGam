@@ -51,3 +51,18 @@ function draw() {
 
 
 
+//Hus-boks til selection
+
+function housebox(){
+    fill(200,200,200)
+    rd.add('boxes', () => rect(1100, 170, 70, 70)) 
+    
+}
+//Select hus når clicker på boksen
+function draw(){
+if(mouseY<240 && mouseY>170 && mouseX<1170 && mouseX>1100) {
+    rd.add('clicked', () => sphere(30, 500, 300))
+
+}
+
+}
