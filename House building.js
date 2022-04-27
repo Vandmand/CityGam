@@ -6,6 +6,7 @@ let placed2 = false
 let placed3 = false
 let placed4 = false
 let placed5 = false
+let houseisselected = false
 timesdrawn = 0
 
 
@@ -56,13 +57,17 @@ function draw() {
 function housebox(){
     fill(200,200,200)
     rd.add('boxes', () => rect(1100, 170, 70, 70)) 
-    
+    rd.add('text', () => text("Press 'down' to select", 980, 270))
 }
-//Select hus når clicker på boksen
-function draw(){
-if(mouseY<240 && mouseY>170 && mouseX<1170 && mouseX>1100) {
-    rd.add('clicked', () => sphere(30, 500, 300))
+//Select hus når clicker på down & og de-select hus når clicker på down
+function keyPressed(){
+if(keyCode === DOWN_ARROW && houseisselected == false){
+houseisselected == true
+   
+}
+if(keyCode === DOWN_ARROW &&  houseisselected == true ){
+    houseisselected == false
+       
+    }
+}
 
-}
-
-}
