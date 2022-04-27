@@ -70,4 +70,9 @@ if(keyCode === DOWN_ARROW &&  houseisselected == true ){
        
     }
 }
-
+function preload(){
+    img = loadImage('Assets/house.jpg');
+}
+function imagedrawing(){
+    rd.add('boxes', () => image(img,10,10,300,300))
+}

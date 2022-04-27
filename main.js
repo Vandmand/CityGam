@@ -1,6 +1,7 @@
 const rd = new Renderer();
 let grid;
 let tM;
+let img;
 
 
 function setup() {
@@ -12,6 +13,7 @@ function setup() {
   drawhappiness();
   housesplaced();
   housebox();
+  imagedrawing();
 }
 
 function draw() {
