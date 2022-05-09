@@ -9,9 +9,19 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Required modules/Grid.md",
+            "file": "Plan For Eksamensprojekt.md",
             "mode": "source",
             "source": false
+          }
+        }
+      },
+      {
+        "id": "2e5cff32a54e098c",
+        "type": "leaf",
+        "state": {
+          "type": "image",
+          "state": {
+            "file": "Images/Pasted image 20220302092841.png"
           }
         }
       }
@@ -52,7 +62,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "\"![[Pasted image 20220302092841.png]]\"",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -82,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Required modules/Grid.md",
+                "file": "Plan For Eksamensprojekt.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,15 +112,15 @@
   },
   "active": "c17ef7bb11114b7a",
   "lastOpenFiles": [
-    "Required modules/Grid.md",
-    "Required modules/Tilesheet.md",
-    "Code Snippets/Grid Snippets.md",
     "Plan For Eksamensprojekt.md",
-    "Code Snippets/Grid/createGrid().md",
-    "Code Snippets/Grid/getAllPos().md",
-    "Code Snippets/Grid/pos().md",
+    "Images/Pasted image 20220302092841.png",
+    "Images/Pasted image 20220309103511.png",
+    "Required modules/Car.md",
+    "Required modules/Building.md",
+    "Required modules/Collision.md",
     "Huskeliste.md",
-    "Required modules/Renderer.md",
-    "Required modules/Happiness.md"
+    "Logbog.md",
+    "Required modules/Grid.md",
+    "Required modules/Tilesheet.md"
   ]
 }

@@ -5,18 +5,18 @@ class Car {
     }
     calcPath() {
         let pos = this.pos;
-        for(let pathFound = false; !pathFound;) {
-            let choise = random(grid.getNeighbors(pos.gx,pos.gy).filter(value => value.tile != undefined))
+        let pathFound = false
+        for(let i = 0; i < 100 || !pathFound; i++) {
+            let neighbors = grid.getNeighbors(pos.gx,pos.gy).filter(value => value.tile != undefined);
+            let choise = random(neighbors)
+            console.log(choise);
             let lastpos = this.path[this.path.length-1]
-            if( lastpos.px != choise.px && lastpos.py != choise.py) {
+            if( lastpos.gx != choise.gx && lastpos.gy != choise.gy) {
                 yeet()
                 this.path.push(choise);
-            }
-            if(this.path[this.path.length-1].tile == 'HOUSE') {
+                pos = choise
+            } else if(this.path[this.path.length-1].tile == 'HOUSE' && this.path.length != 1) {
                 pathFound = true
-            }
-            else {
-                pos = choise;
             }
         }
     }
